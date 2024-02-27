@@ -1,8 +1,8 @@
-import {Route, Router, Routes} from "react-router-dom";
 import {createTheme, ThemeProvider} from "@mui/material";
 import {RecoilRoot} from 'recoil'
 import MainPage from "./page/MainPage";
 import './assets/css.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const theme = createTheme({
   typography: {
@@ -13,11 +13,13 @@ const theme = createTheme({
 function App() {
   return (
       <ThemeProvider theme={theme}>
+          <RecoilRoot>
               <Router>
                   <Routes>
-                      <Route path='/' component={<MainPage />} />
+                      <Route path='/' element={<MainPage />} />
                   </Routes>
               </Router>
+          </RecoilRoot>
       </ThemeProvider>
   );
 }
