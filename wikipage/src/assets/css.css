@@ -1,0 +1,35 @@
+@import "reset.css";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+
+/** 공통 css */
+body{height:100%; margin: 0 auto; background-color: white;}
+img{display: inline-block;}
+.flex{display: flex; }
+.flex_column{display: flex; flex-direction: column;}
+.body_wrap{padding: 40px 20px 20px 20px;}
+
+/** 폰트 css */
+.fw_normal{ font-weight: normal;font-stretch: normal;font-style: normal;letter-spacing: normal;}
+.fw_500{ font-weight: 500;font-stretch: normal;font-style: normal;letter-spacing: normal;}
+.fw_bold{ font-weight: bold;font-stretch: normal;font-style: normal;letter-spacing: normal;}
+.fs_11{font-size: 11px;  line-height: 1.45;}
+.fs_13{font-size: 13px;  line-height: 1.38;}
+.fs_15{font-size: 15px;  line-height: 1.33;}
+.fs_17{font-size: 17px;  line-height: 1.35;}
+.fs_20{font-size: 20px;  line-height: 1.25;}
+.fs_24{font-size: 24px;  line-height: 1.21;}
+.fs_35{font-size: 35px; line-height: 1.98;}
+
+html {
+
+    --black: #0d1121;
+    --blue: #124f90;
+    --purple: #7d8cbb;
+    --pink: #bab2b7;
+    --gray: #d9d6d8;
+}
+
+/** 헤더 */
+.header_wrap {position: relative; background-color: var(--blue); color: white; text-align: center; padding: 20px 0;}
+.header_wrap::before{display: block; position: absolute; bottom: -20px; left: 0; width: 100%; height: 40px; background: inherit; border-radius: 100% 50%; transform: scaleX(2);}
