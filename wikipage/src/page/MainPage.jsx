@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from '../assets/images/KakaoTalk_20240227_130259911.png'
 import {MdOutlineSearch} from 'react-icons/md'
 import MainSection from "../components/MainSection";
+import {keyword} from "../assets/keyworddata";
 
 const MainPage = () => {
+    const [data, setData] = useState(keyword); // 임시데이터
     /** 검색 관련 함수 */
     const handleSearch = () => {
 
