@@ -3,7 +3,7 @@
 
 
 /** 공통 css */
-body{height:100%; margin: 0 auto; background-color: white;}
+body{height:100%; margin: 0 auto; background-color: var(--bg);}
 img{display: inline-block;}
 .flex{display: flex; }
 .flex_column{display: flex; flex-direction: column;}
@@ -28,13 +28,30 @@ html {
     --purple: #7d8cbb;
     --pink: #bab2b7;
     --gray: #d9d6d8;
+    --bg: #f5f4f4;
 }
 
 /** 헤더 */
-.header_wrap {position: relative; background-color: var(--blue); color: white; text-align: center; padding: 20px 0;}
-.header_wrap::before{display: block; position: absolute; bottom: -20px; left: 0; width: 100%; height: 40px; background: inherit; border-radius: 100% 50%; transform: scaleX(2);}
+.header_wrap {background-color: var(--blue); color: white; text-align: center; padding: 20px 0;}
 .header_msg{margin-bottom: 30px}
-.header_btm_wrap{display: flex; width: 70%; margin: 0 auto; height: 150px; vertical-align: middle;}
-.search_wrap{width: 70%;text-align: left; height: 50px; margin-right: 20px; vertical-align: middle; background-color: white; border-radius: 8px;}
-.search_wrap input{border: none;}
-.header_btm_wrap button{width: 150px; border-radius: 8px; height: 50px; color: var(--black);}
+.header_btm_wrap{display: flex; width: 70%; margin: 0 auto; height: 150px;}
+.search_wrap{width: 100%; text-align: left; height: 50px; margin-right: 20px; display: flex; border-radius: 8px; background-color: white; margin-top: 50px;}
+.search_wrap input{border: none; height: 40px; background: none; padding:5px 5px 5px 10px; box-sizing: border-box; width: 85%; vertical-align: middle;}
+.search_wrap svg{color:var(--black); width: 45px; height: 45px; margin-right: 10px; line-height: 50px; cursor: pointer;}
+.header_btm_wrap button{width: 150px; border-radius: 8px; height: 50px; color: var(--black); vertical-align: middle; margin-top: 50px;}
+.keyword_wrap button{margin-right: 15px; border-radius: 18px; width: 120px; height: 40px; border: none; background-color: var(--gray); color: var(--blue); cursor: pointer; }
+.keyword_wrap button:hover{border: none; background-color: var(--black); color: var(--gray);}
+
+/** 섹션 */
+.main_section_wrap {padding: 50px 50px 50px 60px;}
+.main_section_wrap .section_keyword_wrap{justify-content: space-between; display: flex; margin-bottom: 25px;}
+.main_section_wrap .section_keyword_wrap .btn_wrap{vertical-align: middle;}
+.main_section_wrap .section_keyword_wrap .btn_wrap button{margin: 0 0 0 15px; border-radius: 18px; width: 120px; height: 40px; border: none; background-color: var(--blue); color: var(--gray); cursor: pointer;}
+.main_section_wrap .section_keyword_wrap .btn_wrap button:hover{background-color: var(--gray); color: var(--blue); border: none;}
+.main_section_wrap .index_wrap{background-color: var(--gray); padding: 30px; margin-bottom: 20px;}
+.index_wrap  ol{padding: 25px 25px 25px 40px;}
+.index_wrap li{padding: 10px; cursor: pointer;}
+.index_wrap li:hover{font-size: 19px; font-weight: bold;}
+.index_section_wrap{background-color: white; padding: 30px; margin-bottom: 20px;}
+.index_section_wrap .index_section{padding: 25px 25px 25px 40px;}
+.index_section_wrap span{border-bottom: 1px solid var(--gray);}
