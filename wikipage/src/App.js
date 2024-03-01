@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import WikiRegister from "./components/WikiRegister";
 import MainSection from "./page/MainSection";
 import Header from "./components/Header";
+import WikiEdit from "./components/WikiEdit";
+import MainPage from "./page/MainPage";
 
 const theme = createTheme({
   typography: {
@@ -18,10 +20,12 @@ function App() {
           <RecoilRoot>
               <Router>
                   <div>
-                      <Header />{/* 헤더. 모든 페이지에 다 붙어야 함*/}
+                      <Header />{/* 헤더. 모든 페이지에 다 붙어야 함 */}
                       <Routes>
-                          <Route path='/' element={<MainSection />} />{/* 메인 페이지 */}
+                          <Route path='/' element={<MainPage />} />{/* 메인 페이지 */}
+                          <Route path='/:postId' element={<MainSection />} />{/* 키워드 페이지 */}
                           <Route path='/register' element={<WikiRegister />} />{/* 위키 등록 페이지 */}
+                          <Route path='/edit' element={<WikiEdit />} />{/* 위키 수정 페이지 */}
                       </Routes>
                   </div>
 

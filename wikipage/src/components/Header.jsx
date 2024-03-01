@@ -34,11 +34,11 @@ const Header = () => {
                         <div className='search_wrap'>
                             <MdOutlineSearch width={50} height={50} style={{verticalAlign:'middle'}} />
                             <div style={{height: '50px'}}>
-                                <input style={{width: '80%'}} type='text' placeholder='검색' onKeyPress={handleSearch}/>
+                                <input type='text' placeholder='검색' onKeyPress={handleSearch}/>
                             </div>
                         </div>
-                        <div style={{height: '50px'}}>
-                            <button className='fw_500 fs_20' onClick={handleRandomPage}>Random</button>
+                        <div className='random_btn' style={{height: '50px'}}>
+                            <button className='fw_bold fs_20' onClick={handleRandomPage}>Random</button>
                         </div>
                     </div>
                     <div className='keyword_wrap fs_15 fw_bold'>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import React, {useState} from 'react';
+import ReactMarkdown from "react-markdown";
 
-const WikiRegister = () => {
+const WikiEdit = () => {
     const [text, setText] = useState(''); // 글 상태
     const [keyword, setKeyword] = useState(''); // 키워드 상태
     const [author, setAuthor] = useState(''); // 작성자 상태
@@ -10,7 +10,7 @@ const WikiRegister = () => {
     const handleChangeText = (e) => {
         setText(e.target.value);
     };
-    
+
     const handleChangeKeyword = (e) => {
         setKeyword(e.target.value);
     };
@@ -19,18 +19,18 @@ const WikiRegister = () => {
         setAuthor(e.target.value);
     };
 
-    // 모든 필드가 채워져 있을 때만 버튼을 활성화
+    /** 모든 필드가 채워져 있을 때만 버튼을 활성화 */
     const isButtonEnabled = text.length > 0 && keyword.length > 0 && author.length > 0;
 
     return (
-        <div className='wiki_register_wrap'>
+        <div className='wiki_edit_wrap'>
             <h3 className='fw_bold fs_24 check_header'>키워드 등록하기</h3>
-            <div className='register_section_wrap'>
-                <div className='keyword_register'>
+            <div className='edit_section_wrap'>
                     <div className='fw_500 fs_17'>키워드</div>
+                <div className='keyword_edit'>
                     <input type='text' value={keyword} onChange={handleChangeKeyword} />
                 </div>
-                <div className='writer_register'>
+                <div className='writer_edit'>
                     <div className='fw_500 fs_17'>작성자</div>
                     <input type='text' value={author} onChange={handleChangeAuthor} />
                 </div>
@@ -47,10 +47,10 @@ const WikiRegister = () => {
                 </div>
             </div>
             <div className='btn_wrap'>
-                <button className='fs_15 fw_bold' disabled={!isButtonEnabled} style={isButtonEnabled ? {backgroundColor: 'var(--blue)', color: 'var(--gray)'} : {}}>등록</button>
+                <button className='fs_15 fw_bold' disabled={!isButtonEnabled} style={isButtonEnabled ? {backgroundColor: 'var(--blue)', color: 'var(--gray)'} : {}}>수정</button>
             </div>
         </div>
     );
 };
 
-export default WikiRegister;
+export default WikiEdit;

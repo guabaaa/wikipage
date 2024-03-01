@@ -3,9 +3,17 @@ import {useNavigate} from "react-router-dom";
 
 const MainSection = () => {
     const navigate = useNavigate();
+
+    // 등록페이지 이동
     const handleRegister = ()=> {
         navigate('/register')
     }
+
+    // 해당 키워드 수정페이지 이동
+    const handleEdit = () => {
+        navigate('/edit')
+    }
+
     return (
         <div className='main_section_wrap'>
             <div className='section_keyword_wrap'>
@@ -13,7 +21,7 @@ const MainSection = () => {
                 <div className='btn_wrap fw_500 fs_17'>
                     <button onClick={handleRegister}>등록</button>
                     <button>수정내역</button>
-                    <button>수정</button>
+                    <button onClick={handleEdit}>수정</button>
                 </div>
             </div>
             <div className='index_wrap'>
