@@ -36,7 +36,7 @@ html {
 .header_msg{margin-bottom: 30px}
 .header_btm_wrap{display: flex; width: 70%; margin: 0 auto; height: 150px;}
 .search_wrap{width: 100%; text-align: left; height: 50px; margin-right: 20px; display: flex; border-radius: 8px; background-color: white; margin-top: 50px;}
-.search_wrap input{border: none; height: 40px; background: none; padding:5px 5px 5px 10px; box-sizing: border-box; width: 85%; vertical-align: middle;}
+.search_wrap input{border: none; height: 40px; color: var(--black); background: none; padding:5px 5px 5px 10px; box-sizing: border-box; width: 800px; vertical-align: middle;}
 .search_wrap svg{color:var(--black); width: 45px; height: 45px; margin-right: 10px; line-height: 50px; cursor: pointer;}
 .header_btm_wrap button{width: 150px; border-radius: 8px; height: 50px; color: var(--black); vertical-align: middle; margin-top: 50px;}
 .keyword_wrap button{margin-right: 15px; border-radius: 18px; width: 120px; height: 40px; border: none; background-color: var(--gray); color: var(--blue); cursor: pointer; }

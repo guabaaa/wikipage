@@ -1,8 +1,10 @@
 import {createTheme, ThemeProvider} from "@mui/material";
 import {RecoilRoot} from 'recoil'
-import MainPage from "./page/MainPage";
 import './assets/css.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import WikiRegister from "./components/WikiRegister";
+import MainSection from "./page/MainSection";
+import Header from "./components/Header";
 
 const theme = createTheme({
   typography: {
@@ -15,9 +17,14 @@ function App() {
       <ThemeProvider theme={theme}>
           <RecoilRoot>
               <Router>
-                  <Routes>
-                      <Route path='/' element={<MainPage />} />
-                  </Routes>
+                  <div>
+                      <Header />{/* 헤더. 모든 페이지에 다 붙어야 함*/}
+                      <Routes>
+                          <Route path='/' element={<MainSection />} />{/* 메인 페이지 */}
+                          <Route path='/register' element={<WikiRegister />} />{/* 위키 등록 페이지 */}
+                      </Routes>
+                  </div>
+
               </Router>
           </RecoilRoot>
       </ThemeProvider>

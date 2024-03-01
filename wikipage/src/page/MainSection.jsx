@@ -1,11 +1,17 @@
 import React from 'react';
+import {useNavigate} from "react-router-dom";
 
 const MainSection = () => {
+    const navigate = useNavigate();
+    const handleRegister = ()=> {
+        navigate('/register')
+    }
     return (
         <div className='main_section_wrap'>
             <div className='section_keyword_wrap'>
                 <span className='fw_bold fs_35'>키워드</span>
                 <div className='btn_wrap fw_500 fs_17'>
+                    <button onClick={handleRegister}>등록</button>
                     <button>수정내역</button>
                     <button>수정</button>
                 </div>
