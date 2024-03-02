@@ -1,5 +1,5 @@
 import {createTheme, ThemeProvider} from "@mui/material";
-import {RecoilRoot} from 'recoil'
+import {RecoilRoot, useRecoilState} from 'recoil'
 import './assets/css.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import WikiRegister from "./components/WikiRegister";

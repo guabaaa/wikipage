@@ -10,6 +10,7 @@ img{display: inline-block;}
 .body_wrap{padding: 40px 20px 20px 20px;}
 .check_header{margin-bottom: 15px;}
 .blue_color{color: var(--blue);}
+.pointer{cursor: pointer;}
 
 /** 폰트 css */
 .fw_normal{ font-weight: normal;font-stretch: normal;font-style: normal;letter-spacing: normal;}
@@ -42,7 +43,7 @@ html {
 .search_wrap svg{width: 35px; height: 35px; color:var(--purple);margin: 5px 10px 0 5px; line-height: 50px; cursor: pointer;}
 .header_btm_wrap button{width: 150px; border: none; cursor: pointer; color:var(--purple); border-radius: 8px; height: 50px; vertical-align: middle; margin-top: 50px;}
 .header_btm_wrap button:hover{border: none; cursor: pointer; color: var(--bg); background-color: var(--purple);}
-.keyword_wrap button{margin-right: 15px; border-radius: 18px; width: 120px; height: 40px; border: none; background-color: var(--gray); color: var(--blue); cursor: pointer; }
+.keyword_wrap button{margin-right: 15px; border-radius: 18px; width: 120px; height: 40px; border: none; background-color: var(--gray); color: var(--purple); cursor: pointer; }
 .keyword_wrap button:hover{border: none; background-color: var(--purple); color: var(--bg);}
 
 

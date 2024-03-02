@@ -1,26 +1,46 @@
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 const WikiRegister = () => {
+    const navigate = useNavigate();
+
     const [text, setText] = useState(''); // 글 상태
     const [keyword, setKeyword] = useState(''); // 키워드 상태
     const [author, setAuthor] = useState(''); // 작성자 상태
 
     /** 제목,작성자,내용 동작 함수 */
-    const handleChangeText = (e) => {
-        setText(e.target.value);
-    };
-    
-    const handleChangeKeyword = (e) => {
-        setKeyword(e.target.value);
-    };
-
-    const handleChangeAuthor = (e) => {
-        setAuthor(e.target.value);
-    };
+    const handleChangeText = (e) => setText(e.target.value);
+    const handleChangeKeyword = (e) => setKeyword(e.target.value);
+    const handleChangeAuthor = (e) => setAuthor(e.target.value);
 
     // 모든 필드가 채워져 있을 때만 버튼을 활성화
     const isButtonEnabled = text.length > 0 && keyword.length > 0 && author.length > 0;
+
+    /** 등록 핸들러 함수 */
+    const handleSubmit = async () => {
+        const requestBody = {
+            title: keyword,
+            writerName: author,
+            content: text,
+        };
+
+        try {
+            // post 요청
+            const res = await axios.post('http://localhost:8080/post', requestBody);
+
+            if (res.status === 200) {
+                console.log('등록성공:', res.data);
+                navigate('/'); // 성공 시 메인 페이지로 이동
+            } else {
+                // 비정상 응답 처리
+                throw new Error(`등록 실패: ${res.status}`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     return (
         <div className='wiki_register_wrap'>
@@ -47,7 +67,12 @@ const WikiRegister = () => {
                 </div>
             </div>
             <div className='btn_wrap'>
-                <button className='fs_15 fw_bold' disabled={!isButtonEnabled} style={isButtonEnabled ? {backgroundColor: 'var(--blue)', color: 'var(--gray)'} : {}}>등록</button>
+                <button
+                    className='fs_15 fw_bold'
+                    disabled={!isButtonEnabled}
+                    onClick={handleSubmit}
+                    style={isButtonEnabled ? {backgroundColor: 'var(--blue)', color: 'var(--bg)'} : {}}
+                >등록</button>
             </div>
         </div>
     );

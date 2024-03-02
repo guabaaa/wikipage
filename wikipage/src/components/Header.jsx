@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from '../assets/images/KakaoTalk_20240227_130259911.png'
 import {MdOutlineSearch} from 'react-icons/md';
 import {keyword} from "../assets/keyworddata";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 const Header = () => {
     const navigate = useNavigate();
-    const [data, setData] = useState(keyword); // 임시데이터
+    const [data, setData] = useState([]); // 서버로부터 받아온 키워드 저장할 상태
 
     /** 로고 클릭시 메인으로 이동 */
     const handleMain = () => {
@@ -14,14 +15,38 @@ const Header = () => {
     }
 
     /** 검색 관련 함수 */
-    const handleSearch = () => {
-
+    const handleSearch = (e) => {
+        if (e.key === 'Enter') {
+            // 검색 로직
+        }
     }
 
     /** 랜덤 페이지 이벤트 핸들러 */
     const handleRandomPage = () => {
         // 랜덤 페이지 로직
     }
+
+    /** 서버로부터 키워드 데이터를 가져오는 함수 */
+    useEffect(() => {
+        const fetchKeyword = async () => {
+            try {
+                const res = await fetch('http://localhost:8080/home', {
+                    method: 'GET',
+                    headers: {
+                        'Accept': '*/*',
+                    },
+                });
+                if (!res.ok) {
+                    throw new Error('network res');
+                }
+                const keywords = await res.json();
+                setData(keywords); // 서버로부터 받아온 데이터 상태에 저장함
+            } catch (err){
+                console.error('에러', err);
+            }
+        }
+        fetchKeyword();
+    },[])
 
     return (
         <>
@@ -41,13 +66,10 @@ const Header = () => {
                             <button className='fw_bold fs_20' onClick={handleRandomPage}>Random</button>
                         </div>
                     </div>
-                    <div className='keyword_wrap fs_15 fw_bold'>
-                        <button>키워드1</button>
-                        <button>키워드2</button>
-                        <button>키워드3</button>
-                        <button>키워드4</button>
-                        <button>키워드5</button>
-                        <button>키워드6</button>
+                    <div className='keyword_wrap fs_17 fw_bold'>
+                        {data.map((keyword, index) => (
+                            <button key={index}>{keyword.title}</button>
+                        ))}
                     </div>
                 </div>
             </div>
