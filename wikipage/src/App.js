@@ -23,9 +23,9 @@ function App() {
                       <Header />{/* 헤더. 모든 페이지에 다 붙어야 함 */}
                       <Routes>
                           <Route path='/' element={<MainPage />} />{/* 메인 페이지 */}
-                          <Route path='/:postId' element={<MainSection />} />{/* 키워드 페이지 */}
+                          <Route path='/:title' element={<MainSection />} />{/* 키워드 페이지 */}
                           <Route path='/register' element={<WikiRegister />} />{/* 위키 등록 페이지 */}
-                          <Route path='/edit' element={<WikiEdit />} />{/* 위키 수정 페이지 */}
+                          <Route path='/edit/:title' element={<WikiEdit />} />{/* 위키 수정 페이지 */}
                       </Routes>
                   </div>
 

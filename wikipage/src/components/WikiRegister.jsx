@@ -20,25 +20,26 @@ const WikiRegister = () => {
 
     /** 등록 핸들러 함수 */
     const handleSubmit = async () => {
-        const requestBody = {
+        // 입력값 검증
+        if (!keyword || !author || !text) {
+            alert("모든 필드를 채워서 입력해주세요.");
+            return;
+        }
+
+        const postData = {
             title: keyword,
             writerName: author,
-            content: text,
+            content: text
         };
 
         try {
-            // post 요청
-            const res = await axios.post('http://localhost:8080/post', requestBody);
+            const res = await axios.post('http://40.82.159.67:8080/post', postData);
 
-            if (res.status === 200) {
-                console.log('등록성공:', res.data);
-                navigate('/'); // 성공 시 메인 페이지로 이동
-            } else {
-                // 비정상 응답 처리
-                throw new Error(`등록 실패: ${res.status}`);
-            }
-        } catch (error) {
-            console.error('Error:', error);
+            alert('키워드가 성공적으로 등록되었습니다.');
+            navigate('/', {replace: true});
+            window.location.reload();
+        } catch (err) {
+            console.error(err);
         }
     };
 
@@ -59,7 +60,7 @@ const WikiRegister = () => {
                     value={text}
                     onChange={handleChangeText}
                     style={{resize: 'none', width: '90%', height:'750px', padding: '15px', marginBottom: '30px'}}
-                    placeholder='여기에 마크다운 형식으로 글을 작성하세요...'
+                    placeholder='여기에 마크다운 형식으로 글을 작성하세요. ### 이후에 소제목을 정할 수 있습니다.'
                 />
                 <div className='preview_wrap'>
                     <h3 className='fw_bold fs_24 check_header'>미리보기</h3>

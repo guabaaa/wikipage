@@ -1,66 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../assets/images/KakaoTalk_20240227_130259911.png';
-import { MdOutlineSearch } from 'react-icons/md';
-import { useNavigate } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
-const Header = () => {
+const WikiEdit = () => {
     const navigate = useNavigate();
-    const [data, setData] = useState([]); // 서버로부터 받아온 키워드 데이터를 저장할 상태
+    const { title: currentTitle } = useParams(); // 현재 게시글 제목
+    const [text, setText] = useState(''); // 글 상태
+    const [keyword, setKeyword] = useState(''); // 키워드 상태
+    const [author, setAuthor] = useState(''); // 작성자 상태
 
-    /** 로고 클릭시 메인으로 이동 */
-    const handleMain = () => {
-        navigate('/');
-    }
-
-    /** 검색 관련 함수 */
-    const handleSearch = (e) => {
-        if (e.key === 'Enter') {
-            // 검색 로직 구현
-        }
-    }
-
-    /** 랜덤 페이지 이벤트 핸들러 */
-    const handleRandomPage = () => {
-        // 랜덤 페이지 로직
-    }
-
-    /** 서버로부터 키워드 데이터를 가져오는 함수 */
     useEffect(() => {
-        const fetchKeywords = async () => {
+        // 게시글 조회 함수
+        const fetchPost = async () => {
             try {
-                const response = await fetch('http://localhost:8080/home', {
-                    method: 'GET',
-                    headers: {
-                        'Accept': '*/*',
-                    },
-                });
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const keywords = await response.json();
-                setData(keywords); // 서버로부터 받아온 데이터를 상태에 저장
-            } catch (error) {
-                console.error('Error fetching data: ', error);
+                const response = await axios.get(`http://40.82.159.67:8080/post/${encodeURIComponent(currentTitle)}`);
+                const data = response.data;
+                // 조회한 게시글 데이터로 상태 업데이트
+                setText(data.content);
+                setKeyword(data.title);
+                setAuthor(data.writerName);
+            } catch (err) {
+                console.error('Error fetching post data:', err);
+                alert('게시글 조회에 실패했습니다.');
             }
         };
 
-        fetchKeywords();
-    }, []); // 의존성 배열이 빈 배열이므로 컴포넌트가 마운트될 때 한 번만 실행됩니다.
+        fetchPost();
+    }, [currentTitle]);
+
+    // 입력 변경 핸들러, 수정 실행 함수, 버튼 활성화 로직은 이전과 동일...
 
     return (
-        <>
-            <div className='main_wrap'>
-                <div className='header_wrap'>
-                    {/* 기존 코드 생략 */}
-                    <div className='keyword_wrap fs_17 fw_bold'>
-                        {data.map((keyword, index) => (
-                            <button key={index}>{keyword.title}</button> // 예시에서는 키워드 객체에 title 속성이 있다고 가정
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </>
+        <div className='wiki_edit_wrap'>
+            {/* UI 구성 요소 */}
+        </div>
     );
 };
 
-export default Header;
+export default WikiEdit;
